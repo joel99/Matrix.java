@@ -1,11 +1,10 @@
-//Team   - William Xiang and Joel Ye
+//Team  XY - William Xiang and Joel Ye
 //APCS1 pd10
 //HW55 -- Don't Think You Are, Know You Are
 //2016  - 01 - 06
 
 /*====================================
   class Matrix -- models a square matrix
-
   TASK: Implement methods below.
         Categorize runtime of each. 
         Test in your main method.
@@ -110,9 +109,9 @@ public class Matrix {
     // (make it look like a matrix)
     public String toString() {
 		String ret = "";
-		for (int i = 0; i < this.size(); i++){
-			for (int j = 0; j < this.size(); j++)
-				ret += this.get(i,j) + "\t";
+		for (int i = 0; i < size(); i++){
+			for (int j = 0; j < size(); j++)
+				ret += get(i,j) + "\t";
 			ret += "\n";
 		}
 		return ret;
@@ -124,13 +123,12 @@ public class Matrix {
     // and identical values in each slot
     public boolean equals( Object rightSide ) {
 	boolean ret = this == rightSide;
-	if (!ret && rightSide instanceof Matrix && ((Matrix)rightSide).size() == this.size()){
-	    for (int i = 0; i < this.size(); i++)
-		for (int j = 0; j < this.size(); j++)    
-		if (!(this.get(i,j) == null && ((Matrix)rightSide).get(i,j) == null)  
-			&& ((this.get(i,j) == null && ((Matrix)rightSide).get(i,j) != null)
-			|| (this.get(i,j) != null && ((Matrix)rightSide).get(i,j) == null)
-			||!this.get(i,j).equals(((Matrix)rightSide).get(i,j))))
+	if (!ret && rightSide instanceof Matrix && ((Matrix)rightSide).size() == size()){
+	    for (int i = 0; i < size(); i++)
+		for (int j = 0; j < size(); j++)    
+		if (!(get(i,j) == null && ((Matrix)rightSide).get(i,j) == null)  
+			&& (get(i,j) == null
+			||!get(i,j).equals(((Matrix)rightSide).get(i,j))))
 			return false;
 		return true;
 	}
@@ -153,7 +151,7 @@ public class Matrix {
     //row values increase going down
     //column value increase L-to-R
     public void swapRows( int r1, int r2  ) {
-	
+		setRow(r1,setRow(r2,getRow(r1)));
     }
 
 
@@ -163,9 +161,8 @@ public class Matrix {
 	Matrix blue = new Matrix(5);
 	red.set(0,3,2);
 	red.set(2,4,1);
-	System.out.println(red);
-	red.swapRows(0,1);
+	System.out.println(red.contains(0));
+	System.out.println(red.contains(null));
 	System.out.println(red);
     }
-
-}//end class Matrix
+}
