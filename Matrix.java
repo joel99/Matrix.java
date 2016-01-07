@@ -78,8 +78,7 @@ public class Matrix {
 	//using getCol and then changing would results in n runtime
 	//as opposed to 2n runtime (we think)
 	for (int i = 0; i < size(); i++){
-	    ret[i] = get(i,c);
-	    set(i,c,newCol[i]); //append column values to ret after set
+	    ret[i] = set(i,c,newCol[i]); //append column values to ret after set
 	}
 	return ret;
     } // O(n)
